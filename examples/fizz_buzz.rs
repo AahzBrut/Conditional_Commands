@@ -1,3 +1,6 @@
+#![allow(
+clippy::needless_pass_by_value,
+)]
 use bevy::prelude::*;
 use conditional_commands::ConditionalInsertBundleExt;
 
@@ -30,7 +33,7 @@ fn report(
     buzz_query: Query<&Buzz, Without<Fizz>>,
     fizz_buzz_query: Query<(&Fizz, &Buzz)>,
 ) {
-    println!("{} Fizz-Buzz entites spawned", entities.iter().count());
+    println!("{} Fizz-Buzz entities spawned", entities.iter().count());
     println!("{} Numbered", query.iter().count());
     println!("{} Only Fizz", fizz_query.iter().count());
     println!("{} Only Buzz", buzz_query.iter().count());

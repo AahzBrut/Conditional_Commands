@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use conditional_commands::*;
+use conditional_commands::ConditionalInsertBundleExt;
 
 #[derive(Component)]
 struct Name(String);

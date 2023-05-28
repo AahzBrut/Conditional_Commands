@@ -37,7 +37,7 @@ pub trait ConditionalWorldChildBuilderExt {
     ) -> &mut Self;
 }
 
-macro_rules! ImplExt {
+macro_rules! impl_ext {
     ($t:ty) => {
         impl ConditionalInsertBundleExt for $t {
             /// if `condition`, add a [`Bundle`] to the entity
@@ -93,8 +93,8 @@ macro_rules! ImplExt {
     };
 }
 
-ImplExt!(EntityCommands<'_, '_, '_>);
-ImplExt!(EntityMut<'_>);
+impl_ext!(EntityCommands<'_, '_, '_>);
+impl_ext!(EntityMut<'_>);
 
 impl ConditionalChildBuilderExt for EntityCommands<'_, '_, '_> {
     /// if `condition`, create a [`ChildBuilder`] for the entity
@@ -160,6 +160,6 @@ mod tests {
             Without<MyThing>,
             With<AlternativeThing>,
         )>();
-        assert!(query.iter(&world).count() == 1);
+        assert_eq!(query.iter(world).count(), 1);
     }
 }

@@ -1,5 +1,9 @@
+#![allow(
+clippy::needless_pass_by_value,
+)]
 use bevy::prelude::*;
-use conditional_commands::*;
+
+use conditional_commands::ConditionalChildBuilderExt;
 
 #[derive(Component)]
 struct A;

@@ -1,3 +1,6 @@
+#![allow(
+clippy::needless_pass_by_value,
+)]
 use bevy::prelude::*;
 use conditional_commands::ConditionalInsertBundleExt;
 
@@ -13,14 +16,14 @@ fn spawn_entities(mut commands: Commands) {
     }
 }
 
-fn report(a_query: Query<&A, Without<B>>, ab_query: Query<&A, With<B>>) {
+fn report(query_without: Query<&A, Without<B>>, query_with: Query<&A, With<B>>) {
     println!(
         "{} entities with component A and without B.",
-        a_query.iter().count()
+        query_without.iter().count()
     );
     println!(
         "{} entities with both component A and B.",
-        ab_query.iter().count()
+        query_with.iter().count()
     );
 }
 
